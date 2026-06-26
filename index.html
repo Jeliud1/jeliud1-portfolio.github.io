@@ -73,6 +73,37 @@
             color: var(--secondary-color);
         }
 
+        /* Tombol Hamburger (Default Tersembunyi) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Animasi Hamburger Menjadi Silang (X) saat Aktif */
+        .hamburger.active .bar1 {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .hamburger.active .bar2 {
+            opacity: 0;
+        }
+        .hamburger.active .bar3 {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
         /* Sections General */
         section {
             padding: 120px 50px 60px;
@@ -114,6 +145,7 @@
             font-size: 52px;
             color: var(--primary-color);
             margin-bottom: 10px;
+            z-index: 2;
         }
 
         #beranda h2 {
@@ -121,6 +153,11 @@
             color: var(--secondary-color);
             font-weight: 500;
             margin-bottom: 25px;
+            z-index: 2;
+        }
+
+        #beranda p {
+            z-index: 2;
         }
 
         .btn {
@@ -133,6 +170,7 @@
             font-weight: bold;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3);
+            z-index: 2;
         }
 
         .btn:hover {
@@ -140,6 +178,73 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(52, 152, 219, 0.4);
         }
+
+        /* ==========================================================================
+           STYLE IMAGE SLIDER (Background Slider untuk Hero Section)
+           ========================================================================== */
+        .slider-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        /* Overlay gelap agar teks di atas gambar tetap terbaca jelas */
+        .slider-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(244, 247, 246, 0.85); /* Menyesuaikan var(--bg-color) dengan transparansi */
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        /* Tombol Navigasi Slider Manual */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(44, 62, 80, 0.6);
+            color: var(--white);
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 50%;
+            z-index: 3;
+            transition: background 0.3s;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-btn:hover {
+            background: var(--primary-color);
+        }
+
+        .prev-btn { left: 30px; }
+        .next-btn { right: 30px; }
 
         /* Tentang Saya */
         .tentang-card {
@@ -154,7 +259,7 @@
 
         /* Pengalaman Kerja */
         .pengalaman-container {
-            background: var(--white); /* FIX: Mengganti var(--blue) yang tidak ada menjadi var(--white) */
+            background: var(--white);
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
@@ -251,38 +356,53 @@
         }
 
         /* ==========================================================================
-           PERBAIKAN MEDIA QUERY (Optimasi Responsif Layar HP & Tablet)
+           MEDIA QUERY (Optimasi Responsif Layar HP & Tablet)
            ========================================================================== */
         @media (max-width: 768px) {
-            /* Mengurangi padding section agar konten tidak terlalu menjauh dari tepi HP */
             section {
                 padding: 100px 20px 40px;
             }
 
-            /* Mengatur susunan menu navigasi */
             nav {
-                flex-direction: column;
-                gap: 12px;
-                padding: 15px 0px;
+                padding: 15px 30px;
             }
 
+            /* Aktifkan tombol Hamburger di Mobile */
+            .hamburger {
+                display: flex;
+            }
+
+            /* Mengubah menu navigasi menjadi menu tirai (Sidebar/Dropdown) */
             nav ul {
-                gap: 15px;
-                flex-wrap: wrap;
+                position: fixed;
+                top: 0;
+                right: -100%; /* Sembunyi di kanan layar */
+                width: 70%;
+                height: 100vh;
+                background-color: var(--white);
+                flex-direction: column;
                 justify-content: center;
+                align-items: center;
+                gap: 30px;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                transition: right 0.4s ease;
+                z-index: 1000;
+            }
+
+            /* Menampilkan menu saat hamburger diklik */
+            nav ul.show {
+                right: 0;
             }
 
             nav ul li a {
-                font-size: 12px;
-
+                font-size: 18px;
             }
 
             nav ul li a:hover {
-                color: blueviolet;
-                text-decoration: underline;
+                color: var(--secondary-color);
+                text-decoration: none;
             }
 
-            /* Mengecilkan judul section */
             .section-title {
                 font-size: 26px;
                 margin-bottom: 35px;
@@ -294,6 +414,18 @@
                 min-height: 100vh;
                 padding: 120px 15px 60px;
             }
+
+            .slider-container, .slider-container::after {
+                height: 100%;
+            }
+
+            .slider-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+            .prev-btn { left: 10px; }
+            .next-btn { right: 10px; }
 
             #beranda h1 {
                 font-size: 32px;
@@ -310,14 +442,12 @@
                 margin-bottom: 25px !important;
             }
 
-            /* Kartu Tentang Saya */
             .tentang-card {
                 padding: 25px 20px;
                 font-size: 15px;
-                text-align: left; /* Teks rata kiri lebih nyaman dibaca di layar kecil dibanding justify */
+                text-align: left;
             }
 
-            /* Kontainer Pengalaman Kerja */
             .pengalaman-container {
                 padding: 25px 20px;
                 margin-bottom: 35px;
@@ -343,7 +473,6 @@
                 padding: 4px 12px;
             }
 
-            /* Mengubah daftar tugas menjadi 1 kolom vertikal penuh */
             .tugas-list {
                 grid-template-columns: 1fr;
                 gap: 10px;
@@ -353,7 +482,6 @@
                 font-size: 14px;
             }
 
-            /* Jarak grid keahlian di HP */
             .grid-keahlian {
                 gap: 20px;
             }
@@ -362,7 +490,6 @@
                 padding: 20px;
             }
 
-            /* Kontainer Kontak */
             .kontak-container {
                 padding: 35px 20px;
             }
@@ -378,7 +505,14 @@
     <header>
         <nav>
             <a href="#beranda" class="logo">Portofolio.</a>
-            <ul>
+            
+            <button class="hamburger" id="hamburger-btn" aria-label="Menu">
+                <span class="bar1"></span>
+                <span class="bar2"></span>
+                <span class="bar3"></span>
+            </button>
+
+            <ul id="nav-menu">
                 <li><a href="#beranda">Beranda</a></li>
                 <li><a href="#tentang">Tentang Saya</a></li>
                 <li><a href="#pengalaman">Pengalaman & Keahlian</a></li>
@@ -388,9 +522,18 @@
     </header>
 
     <section id="beranda">
+        <div class="slider-container">
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200');"></div>
+        </div>
+
+        <button class="slider-btn prev-btn" id="prev-slide">&#10094;</button>
+        <button class="slider-btn next-btn" id="next-slide">&#10095;</button>
+
         <h1>Halo, Saya [Nama Anda]</h1>
         <h2>Warehouse Staff Administrasi Logistik & Junior Web Programmer</h2>
-        <p style="max-width: 700px; margin-bottom: 35px; color: #666; font-size: 18px;">
+        <p style="max-width: 700px; margin-bottom: 35px; color: #333; font-size: 18px; font-weight: 500;">
             Berpengalaman di industri FMCG dalam mengelola data, proses logistik, sistem WMS, dan integrasi SAP dengan standar keamanan pangan ISO 22000:2018.
         </p>
         <a href="#pengalaman" class="btn">Lihat Pengalaman Saya</a>
@@ -469,5 +612,78 @@
         <p>&copy; 2026 [Nama Anda]. Semua Hak Dilindungi.</p>
     </footer>
 
+    <script>
+        // 1. LOGIKA HAMBURGER MENU
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('#nav-menu li a');
+
+        // Toggle buka/tutup menu saat hamburger diklik
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            navMenu.classList.toggle('show');
+        });
+
+        // Tutup menu otomatis saat salah satu link navigasi diklik
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                navMenu.classList.remove('show');
+            });
+        });
+
+
+        // 2. LOGIKA IMAGE SLIDER (OTOMATIS & MANUAL)
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prev-slide');
+        const nextBtn = document.getElementById('next-slide');
+        let currentSlide = 0;
+        const slideIntervalTime = 5000; // Mengubah gambar otomatis setiap 5 detik
+        let slideInterval;
+
+        function showSlide(index) {
+            // Hilangkan class active dari slide saat ini
+            slides[currentSlide].classList.remove('active');
+            
+            // Hitung indeks slide baru (looping kembali jika sudah di ujung)
+            currentSlide = (index + slides.length) % slides.length;
+            
+            // Tambahkan class active ke slide yang baru
+            slides[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Jalankan slider otomatis
+        function startAutoSlide() {
+            slideInterval = setInterval(nextSlide, slideIntervalTime);
+        }
+
+        // Reset waktu otomatis saat user mengklik manual agar tidak bertabrakan
+        function resetAutoSlide() {
+            clearInterval(slideInterval);
+            startAutoSlide();
+        }
+
+        // Event Listener untuk tombol manual
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetAutoSlide();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetAutoSlide();
+        });
+
+        // Mulai slider otomatis saat halaman dimuat
+        startAutoSlide();
+    </script>
 </body>
 </html>
