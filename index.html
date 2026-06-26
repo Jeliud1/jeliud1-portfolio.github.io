@@ -154,7 +154,7 @@
 
         /* Pengalaman Kerja */
         .pengalaman-container {
-            background: var(--blue);
+            background: var(--white); /* FIX: Mengganti var(--blue) yang tidak ada menjadi var(--white) */
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
@@ -250,30 +250,125 @@
             margin-top: 50px;
         }
 
-        /* Responsif untuk HP */
+        /* ==========================================================================
+           PERBAIKAN MEDIA QUERY (Optimasi Responsif Layar HP & Tablet)
+           ========================================================================== */
         @media (max-width: 768px) {
+            /* Mengurangi padding section agar konten tidak terlalu menjauh dari tepi HP */
+            section {
+                padding: 100px 20px 40px;
+            }
+
+            /* Mengatur susunan menu navigasi */
             nav {
                 flex-direction: column;
+                gap: 12px;
+                padding: 15px 20px;
+            }
+
+            nav ul {
                 gap: 15px;
-                padding: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
+
+            nav ul li a {
+                font-size: 15px;
+            }
+
+            /* Mengecilkan judul section */
+            .section-title {
+                font-size: 26px;
+                margin-bottom: 35px;
+            }
+
+            /* Optimasi area Hero / Beranda */
+            #beranda {
+                height: auto;
+                min-height: 100vh;
+                padding: 120px 15px 60px;
+            }
+
             #beranda h1 {
-                font-size: 36px;
+                font-size: 32px;
+                line-height: 1.2;
             }
+
+            #beranda h2 {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+
+            #beranda p {
+                font-size: 15px !important;
+                margin-bottom: 25px !important;
+            }
+
+            /* Kartu Tentang Saya */
+            .tentang-card {
+                padding: 25px 20px;
+                font-size: 15px;
+                text-align: left; /* Teks rata kiri lebih nyaman dibaca di layar kecil dibanding justify */
+            }
+
+            /* Kontainer Pengalaman Kerja */
+            .pengalaman-container {
+                padding: 25px 20px;
+                margin-bottom: 35px;
+            }
+
             .pengalaman-header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 10px;
+                gap: 12px;
             }
+
+            .pengalaman-header h3 {
+                font-size: 20px;
+            }
+
+            .pengalaman-header h4 {
+                font-size: 16px;
+            }
+
+            .tanggal {
+                align-self: flex-start;
+                font-size: 12px;
+                padding: 4px 12px;
+            }
+
+            /* Mengubah daftar tugas menjadi 1 kolom vertikal penuh */
             .tugas-list {
                 grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .tugas-list li {
+                font-size: 14px;
+            }
+
+            /* Jarak grid keahlian di HP */
+            .grid-keahlian {
+                gap: 20px;
+            }
+
+            .kartu-keahlian {
+                padding: 20px;
+            }
+
+            /* Kontainer Kontak */
+            .kontak-container {
+                padding: 35px 20px;
+            }
+
+            .kontak-container p {
+                font-size: 15px !important;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigasi -->
     <header>
         <nav>
             <a href="#beranda" class="logo">Portofolio.</a>
@@ -286,7 +381,6 @@
         </nav>
     </header>
 
-    <!-- Bagian Beranda -->
     <section id="beranda">
         <h1>Halo, Saya [Nama Anda]</h1>
         <h2>Warehouse Staff Administrasi Logistik & Junior Web Programmer</h2>
@@ -296,7 +390,6 @@
         <a href="#pengalaman" class="btn">Lihat Pengalaman Saya</a>
     </section>
 
-    <!-- Bagian Tentang Saya -->
     <section id="tentang">
         <h2 class="section-title">Tentang Saya</h2>
         <div class="tentang-card">
@@ -306,11 +399,9 @@
         </div>
     </section>
 
-    <!-- Bagian Pengalaman & Keahlian -->
     <section id="pengalaman">
         <h2 class="section-title">Pengalaman Kerja</h2>
         
-        <!-- Detail Pekerjaan -->
         <div class="pengalaman-container">
             <div class="pengalaman-header">
                 <div>
@@ -339,19 +430,16 @@
 
         <h2 class="section-title">Keahlian Utama</h2>
         <div class="grid-keahlian">
-            <!-- Keahlian 1 -->
             <div class="kartu-keahlian">
                 <h3>Sistem SAP & WMS</h3>
                 <p>Penguasaan mendalam dalam penggunaan SAP untuk proses logistik end-to-end, mulai dari SO, DO, Good Receipts (GR), Transfer Order (TO), hingga Return Management.</p>
             </div>
 
-            <!-- Keahlian 2 -->
             <div class="kartu-keahlian">
                 <h3>Administrasi Logistik & Bea Cukai</h3>
                 <p>Terbiasa menangani pelaporan dokumen legal seperti web Bea Cukai CK-6 Ceisa 4.0, Proof of Delivery (POD), faktur, serta audit stok (Stock Opname).</p>
             </div>
 
-            <!-- Keahlian 3 -->
             <div class="kartu-keahlian">
                 <h3>Data Analyst & Web Programming</h3>
                 <p>Mampu mengelola dan menganalisis data menggunakan Ms. Excel & Spreadsheet. Memiliki kemampuan dasar pengembangan website sebagai Junior Web Programmer.</p>
@@ -359,7 +447,6 @@
         </div>
     </section>
 
-    <!-- Bagian Kontak -->
     <section id="kontak">
         <h2 class="section-title">Hubungi Saya</h2>
         <div class="kontak-container">
@@ -372,7 +459,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2026 [Nama Anda]. Semua Hak Dilindungi.</p>
     </footer>
