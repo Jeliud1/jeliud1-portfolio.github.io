@@ -436,6 +436,7 @@
         }
 
         .kontak-container a { font-size: 18px; }
+        [data-theme="dark"] .kontak-container a { color: #ffffff; }
 
         footer {
             background-color: #1a1a1a;
@@ -785,28 +786,29 @@
         // JAVASCRIPT BARU: Logika Perhitungan Progres Lingkaran & Scroll To Top
         // ==========================================================================
     
-const scrollBtn = document.getElementById('scrollTop');
-const progressCircle = document.querySelector('.progress');
-const circumference = 2 * Math.PI * 45;
+        const scrollBtn = document.getElementById('scrollTop');
+        const progressCircle = document.querySelector('.progress');
+        const circumference = 2 * Math.PI * 45;
 
-window.addEventListener('scroll', () => {
-  const scrollTop = window.pageYOffset;
-  const docHeight = document.body.scrollHeight - window.innerHeight;
-  const scrollPercent = scrollTop / docHeight;
-  const offset = circumference - scrollPercent * circumference;
+        window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const scrollPercent = scrollTop / docHeight;
+        const offset = circumference - scrollPercent * circumference;
   
-  progressCircle.style.strokeDashoffset = offset;
+        progressCircle.style.strokeDashoffset = offset;
   
-  if (scrollTop > 300) {
-    scrollBtn.classList.add('show');
-  } else {
-    scrollBtn.classList.remove('show');
-  }
-});
+        if (scrollTop > 300) {
+        scrollBtn.classList.add('show');
+        } else {
+        scrollBtn.classList.remove('show');
+        }
+        });
 
-scrollBtn.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+        scrollBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+            
     </script>
 </body>
 </html>
