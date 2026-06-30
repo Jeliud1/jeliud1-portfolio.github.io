@@ -89,6 +89,27 @@
             text-decoration: none;
             letter-spacing: 1px;
             z-index: 1002;
+
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #333;
+            width: 0;
+
+            animation:
+            typing 3s steps(22, end) forwards,
+            hideCursor 0s linear 3s forwards;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 22ch; }
+        }
+
+        @keyframes hideCursor {
+            to {
+            border-right-color: transparent;
+        }
         }
 
         .nav-right {
@@ -203,13 +224,24 @@
         }
 
         #beranda h2 {
-            font-size: 22px;
-            color: var(--secondary-color);
+            font-size: 28px;
+            color: blue;
             font-weight: 500;
             margin-bottom: 25px;
             z-index: 2;
             position: relative;
         }
+
+        body.dark #typing-name,
+        body.dark #typing-job{
+            border-right:3px solid #fff;
+        }
+
+        body.light #typing-name,
+        body.light #typing-job{
+            border-right:3px solid #222;
+        }
+
 
         .slider-container {
             position: absolute;
@@ -436,7 +468,8 @@
         }
 
         .kontak-container a { font-size: 18px; }
-        [data-theme="dark"] .kontak-container a { color: #ffffff; }
+        [data-theme="dark"] .kontak-container a { color: #ffffff; } 
+        
 
         footer {
             background-color: #1a1a1a;
@@ -554,6 +587,17 @@
             .kontak-container a { font-size: 18px; }
         }
 
+        /* Posisikan tombol scroll sedikit lebih kecil di HP 
+            .progress-wrap { right: 20px; bottom: 20px; height: 40px; width: 40px; }
+            .progress-wrap::after { 
+                line-height: 40px; 
+                height: 40px; 
+                width: 40px; 
+                font-size: 18px; 
+                
+            }
+        */
+
     </style>
 </head>
 <body>
@@ -586,12 +630,12 @@
 
     <!-- ELEMEN BARU: Struktur HTML untuk Scroll To Top Progress Button -->
     <button id="scrollTop" class="scroll-top">
-  <svg viewBox="0 0 100 100">
-    <circle cx="50" cy="50" r="45" class="bg"></circle>
-    <circle cx="50" cy="50" r="45" class="progress"></circle>
-  </svg>
-  <span class="arrow">↑</span>
-</button>
+        <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" class="bg"></circle>
+            <circle cx="50" cy="50" r="45" class="progress"></circle>
+        </svg>
+        <span class="arrow">↑</span>
+    </button>
 
     <section id="beranda">
         <div class="slider-container">
@@ -604,11 +648,8 @@
         <button class="slider-btn prev-btn" id="prev-slide">&#10094;</button>
         <button class="slider-btn next-btn" id="next-slide">&#10095;</button>
 
-        <h1>Halo, Saya Jhonny Eliud Tambunan</h1>
-        <h2>Warehouse Staff Administrasi Logistik & Junior Web Programmer</h2>
-        <p style="max-width: 700px; margin-bottom: 35px; font-size: 18px; font-weight: 500;">
-            Berpengalaman di industri FMCG dalam mengelola data, proses logistik, sistem WMS, dan integrasi SAP dengan standar keamanan pangan ISO 22000:2018.
-        </p>
+        <h1><span id="typing-name"></span></h1>
+        <h2><span id="typing-job"></span></h2>
         <a href="#pengalaman" class="btn">Lihat Pengalaman Saya</a>
     </section>
 
@@ -712,6 +753,103 @@
     </footer>
 
     <script>
+        // ===============================
+// TYPEWRITER EFFECT
+// ===============================
+
+const nameElement = document.getElementById("typing-name");
+const jobElement = document.getElementById("typing-job");
+
+const nameText = "Halo, saya Jhonny Eliud Tambunan";
+
+const jobs = [
+    "Warehouse Staff",
+    "Administrasi Logistik",
+    "SAP User",
+    "Junior Web Programmer"
+];
+
+let nameIndex = 0;
+
+function typeName() {
+
+    if (nameIndex < nameText.length) {
+
+        nameElement.textContent += nameText.charAt(nameIndex);
+
+        nameIndex++;
+
+        setTimeout(typeName,120);
+
+    }else{
+
+        setTimeout(typeJob,1000);
+
+    }
+
+}
+
+// ===============================
+
+let jobIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+function typeJob(){
+
+    const currentJob = jobs[jobIndex];
+
+    if(!deleting){
+
+        jobElement.textContent = currentJob.substring(0,charIndex);
+
+        charIndex++;
+
+        if(charIndex <= currentJob.length){
+
+            setTimeout(typeJob,90);
+
+        }else{
+
+            deleting = true;
+
+            setTimeout(typeJob,1800);
+
+        }
+
+    }else{
+
+        jobElement.textContent = currentJob.substring(0,charIndex);
+
+        charIndex--;
+
+        if(charIndex >=0){
+
+            setTimeout(typeJob,50);
+
+        }else{
+
+            deleting = false;
+
+            jobIndex++;
+
+            if(jobIndex >= jobs.length){
+
+                jobIndex = 0;
+
+            }
+
+            setTimeout(typeJob,300);
+
+        }
+
+    }
+
+}
+
+typeName();
+
+
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const navMenu = document.getElementById('nav-menu');
         const menuOverlay = document.getElementById('menuOverlay');
@@ -808,7 +946,6 @@
         scrollBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-            
     </script>
 </body>
 </html>
