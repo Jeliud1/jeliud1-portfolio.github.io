@@ -237,7 +237,7 @@
 
             /* Tambahkan ini untuk mengunci tinggi desktop */
     display: block;
-    min-height: 35px;
+    min-height: 45px;
         }
 
         body.dark #typing-name,
@@ -533,9 +533,9 @@
            
 
             .logo {
-        font-size: 8px !important; /* Mengecilkan ukuran huruf agar muat di layar HP */
+        font-size: 10px !important; /* Mengecilkan ukuran huruf agar muat di layar HP */
        white-space:nowrap;
-
+       
     }
 
     .nav-right{
@@ -601,8 +601,23 @@
             .prev-btn { left: 10px; }
             .next-btn { right: 10px; }
 
-            #beranda h1 { font-size: 32px; line-height: 1.2; }
-            #beranda h2 { font-size: 18px; margin-bottom: 20px; }
+            #beranda h1 { 
+                font-size: 32px; 
+                line-height: 1.2; 
+                
+                /* Tambahkan ini untuk mengunci tinggi desktop */
+                display: block;
+                min-height: 70px;
+            }
+
+            #beranda h2 { 
+                font-size: 18px; 
+                margin-bottom: 20px; 
+                /* Tambahkan ini untuk mengunci tinggi desktop */
+                display: block;
+                min-height: 35px;
+            }
+
             #beranda p { font-size: 15px !important; margin-bottom: 25px !important; line-height: 1.5; color: var(--text-color) !important; }
 
             .about-gallery { flex-direction: column; gap: 15px; padding: 0 20px; }
