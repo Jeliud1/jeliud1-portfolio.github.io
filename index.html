@@ -222,6 +222,9 @@
             margin-bottom: 10px;
             z-index: 2;
             position: relative;
+            /* Tambahkan ini untuk mengunci tinggi desktop */
+    display: block;
+    min-height: 70px;
         }
 
         #beranda h2 {
@@ -231,6 +234,10 @@
             margin-bottom: 25px;
             z-index: 2;
             position: relative;
+
+            /* Tambahkan ini untuk mengunci tinggi desktop */
+    display: block;
+    min-height: 35px;
         }
 
         body.dark #typing-name,
@@ -284,9 +291,9 @@
 
         .slider-btn {
             position: absolute;
-            top: 60%;
+            top: 70%;
             transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.4);
+            
             color: #ffffff;
             border: none;
             padding: 15px;
@@ -515,8 +522,38 @@
 
         @media (max-width: 768px) {
             section { padding: 100px 20px 40px; }
-            nav { padding: 15px 20px; }
-            .hamburger { display: flex; }
+
+            nav { 
+                padding: 5px 5px; 
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+           
+
+            .logo {
+        font-size: 8px !important; /* Mengecilkan ukuran huruf agar muat di layar HP */
+       white-space:nowrap;
+
+    }
+
+    .nav-right{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+            .theme-toggle {
+                display: flex;
+        transform: scale(0.7); /* Mengecilkan seluruh elemen tombol sebanyak 20% */
+        
+    }
+
+            .hamburger { 
+                display: flex; 
+                transform: scale(0.7); /* Mengecilkan seluruh elemen tombol sebanyak 20% */
+        padding: 1px 8PX !important;
+            }
 
             nav ul {
                 position: fixed;
@@ -544,15 +581,6 @@
                 display: block; 
                 padding: 5px; 
                 color: var(--text-color); 
-            }
-
-            .logo {
-                font-size: 14px !important; /* Mengecilkan font di hp agar muat satu baris */
-                white-space: nowrap; /* Mencegah teks patah menjadi 2 baris */
-                overflow: hidden;
-                text-overflow: ellipsis; /* Jika layar sangat kecil, sisa nama akan menjadi ... secara rapi */
-                max-width: 60%; /* Membatasi lebar logo agar tidak menabrak tombol bulan & menu */
-    
             }
 
             .menu-overlay {
