@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>Portfolio Profesional | [Nama Anda]</title>
     <style>
         /* CSS Styling */
@@ -546,7 +547,12 @@
             }
 
             .logo {
-                font-size: 10px;
+                font-size: 14px !important; /* Mengecilkan font di hp agar muat satu baris */
+                white-space: nowrap; /* Mencegah teks patah menjadi 2 baris */
+                overflow: hidden;
+                text-overflow: ellipsis; /* Jika layar sangat kecil, sisa nama akan menjadi ... secara rapi */
+                max-width: 60%; /* Membatasi lebar logo agar tidak menabrak tombol bulan & menu */
+    
             }
 
             .menu-overlay {
@@ -659,24 +665,24 @@
 
     <section id="tentang">
         <div class="about-gallery">
-            <div class="img-container">
+            <div class="img-container"data-aos="fade-up" data-aos-delay="0">
                 <img src="profil1.jpeg" alt="Foto Aktivitas 1">
             </div>
-            <div class="img-container">
+            <div class="img-container" data-aos="fade-up" data-aos-delay="200">
                 <img src="profil3.jpg" alt="Foto Aktivitas 2">
             </div>
-            <div class="img-container">
+            <div class="img-container" data-aos="fade-up" data-aos-delay="400">
                 <img src="profil5.jpeg" alt="Foto Aktivitas 3">
             </div>
         </div>
 
-        <div class="about-content-box">
+        <div class="about-content-box" data-aos="fade-up">
             <div class="about-title-box">
                 <h2>About Me</h2>
                 <div class="line"></div>
             </div>
             
-            <div class="about-text-box">
+            <div class="about-text-box" data-aos="flip-up">
                 <!--<h3>My Vision</h3>-->
                 <p>Seorang profesional Warehouse Staff Administrasi Logistik di perusahaan FMCG pada bidang makanan dan minuman. Terampil dalam mengelola dan menganalisis data, mengelola dokumen, data entry, proses logistik, sistem WMS dan mahir dalam mengoperasikan Microsoft Office (Word, Excel, Power Point), Spreadsheet, Aplikasi SAP dan kemampuan sebagai Web Programmer junior.</p>
             </div>
@@ -689,11 +695,11 @@
         </div>
     </section>
 
-    <section id="pengalaman">
+    <section id="pengalaman" data-aos="fade-up">
         <h2 class="section-title">Pengalaman Kerja</h2>
         
         <div class="pengalaman-container">
-            <div class="pengalaman-header">
+            <div class="pengalaman-header" data-aos="fade-up">
                 <div>
                     <h3>PT. NIRWANA LESTARI</h3>
                     <h4>Administrasi Warehouse</h4>
@@ -701,8 +707,8 @@
                 <div class="tanggal">Januari 2020 – Mei 2026</div>
             </div>
             
-            <p style="margin-bottom: 15px; font-weight: bold; color: var(--secondary-color);">Tanggung Jawab Utama:</p>
-            <ul class="tugas-list">
+            <p style="margin-bottom: 15px; font-weight: bold; color: var(--secondary-color);" data-aos="fade-up">Tanggung Jawab Utama:</p>
+            <ul class="tugas-list" data-aos="flip-up">
                 <li>Proses Sales Orders (SO) dan Delivery Orders (DO) melalui SAP.</li>
                 <li>Proses laporan pengeluaran data produk via web Bea Cukai CK-6 Ceisa 4.0.</li>
                 <li>Proses produk Reject, RMA, dan double rejection melalui SAP.</li>
@@ -718,19 +724,19 @@
             </ul>
         </div>
 
-        <h2 class="section-title">Keahlian Utama</h2>
+        <h2 class="section-title" data-aos="fade-up">Keahlian Utama</h2>
         <div class="grid-keahlian">
-            <div class="kartu-keahlian">
+            <div class="kartu-keahlian" data-aos="fade-right" data-aos-delay="0">
                 <h3>Sistem SAP & WMS</h3>
                 <p>Penguasaan mendalam dalam penggunaan SAP untuk proses logistik end-to-end, mulai dari SO, DO, Good Receipts (GR), Transfer Order (TO), hingga Return Management.</p>
             </div>
 
-            <div class="kartu-keahlian">
+            <div class="kartu-keahlian" data-aos="fade-right" data-aos-delay="200">
                 <h3>Administrasi Logistik & Bea Cukai</h3>
                 <p>Terbiasa menangani pelaporan dokumen legal seperti web Bea Cukai CK-6 Ceisa 4.0, Proof of Delivery (POD), faktur, serta audit stok (Stock Opname).</p>
             </div>
 
-            <div class="kartu-keahlian">
+            <div class="kartu-keahlian" data-aos="fade-right" data-aos-delay="400">
                 <h3>Data Analyst & Web Programming</h3>
                 <p>Mampu mengelola dan menganalisis data menggunakan Ms. Excel & Spreadsheet. Memiliki kemampuan dasar pengembangan website sebagai Junior Web Programmer.</p>
             </div>
@@ -738,8 +744,8 @@
     </section>
 
     <section id="kontak">
-        <h2 class="section-title">Hubungi Saya</h2>
-        <div class="kontak-container">
+        <h2 class="section-title" data-aos="fade-up">Hubungi Saya</h2>
+        <div class="kontak-container" data-aos="flip-down">
             <p style="font-size: 18px; margin-bottom: 20px;">Tertarik untuk berdiskusi mengenai peluang kerja atau kolaborasi? Jangan ragu untuk menghubungi saya melalui kontak di bawah ini.</p>
             
             <p style="font-size: 16px; margin-bottom: 10px;"><strong>Email:</strong> jhonnyeliudtambunan@gmail.com</p>
@@ -757,7 +763,7 @@
     </footer>
 
     <script>
-        // ===============================
+// ===============================
 // TYPEWRITER EFFECT
 // ===============================
 
@@ -951,5 +957,16 @@ typeName();
         window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000, // Durasi animasi (1000ms = 1 detik)
+        once: false,    // Setel ke 'false' agar efeknya selalu muncul tiap scroll ke atas/bawah
+        offset: 120     // Animasi baru dimulai setelah elemen berjarak 120px dari bawah layar
+    });
+</script>
+
 </body>
 </html>
