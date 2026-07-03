@@ -48,12 +48,13 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family:'Plus Jakarta Sans',sans-serif;
             scroll-behavior: smooth;
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
+            font-family:'Plus Jakarta Sans',sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
@@ -243,13 +244,16 @@
         }
 
         #beranda p {
-            font-size: 12px;
+            max-width: 700px; 
+            font-size: 18px; 
+            font-weight: 500;
+            
           margin-bottom: 25px;
            z-index: 2;
             position: relative;
         }
 
-.btn {
+        .btn {
             display: inline-block;
             padding: 14px 28px;
             background-color: var(--secondary-color);
@@ -316,8 +320,8 @@
             position: absolute;
             top: 70%;
             transform: translateY(-50%);
-            background: #f5e4e4 ;
-            color: #ffffff;
+            background: transparent ;
+            
             border: none;
             padding: 15px;
             cursor: pointer;
@@ -620,7 +624,12 @@
             .menu-overlay.active { display: block; }
 
             #beranda { height: auto; min-height: 100vh; padding: 140px 15px 80px; }
-            .slider-btn { width: 40px; height: 40px; font-size: 16px; }
+            .slider-btn { 
+                width: 40px; 
+                background: transparent;
+                height: 40px; 
+                font-size: 16px; 
+            }
             .prev-btn { left: 10px; }
             .next-btn { right: 10px; }
 
@@ -715,10 +724,10 @@
 
     <section id="beranda">
         <div class="slider-container">
-            <div class="slide active" style="background-image: url('bg1.jpeg');"></div>
-            <div class="slide" style="background-image: url('bg2.jpeg');"></div>
-            <div class="slide" style="background-image: url('bg3.jpeg');"></div>
-            <div class="slide" style="background-image: url('bg4.jpeg');"></div>
+            <div class="slide active" style="background-image: url('bg7.jpg');"></div>
+            <div class="slide" style="background-image: url('bg8.jpg');"></div>
+            <div class="slide" style="background-image: url('bg9.jpg');"></div>
+            <div class="slide" style="background-image: url('bg10.jpg');"></div>
         </div>
 
         <button class="slider-btn prev-btn" id="prev-slide">&#10094;</button>
@@ -726,8 +735,8 @@
 
         <h1><span id="typing-name"></span></h1>
         <h2><span id="typing-job"></span></h2>
-        <p style="max-width: 700px; margin-bottom: 35px; color: #333; font-size: 18px; font-weight: 500;">
-            Berpengalaman di industri FMCG dalam mengelola data, proses logistik, sistem WMS, dan integrasi SAP dengan standar keamanan pangan ISO 22000:2018.
+        <p>
+            Berpengalaman di industri FMCG dalam mengelola data, proses logistik, sistem WMS, dan integrasi SAP.
         </p>
         <a href="#pengalaman" class="btn">Lihat Pengalaman Saya</a>
     </section>
@@ -741,7 +750,7 @@
                 <img src="profil3.jpg" alt="Foto Aktivitas 2">
             </div>
             <div class="img-container" data-aos="fade-up" data-aos-delay="400">
-                <img src="profil5.jpeg" alt="Foto Aktivitas 3">
+                <img src="bg5.jpeg" alt="Foto Aktivitas 3">
             </div>
         </div>
 
