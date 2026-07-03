@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
     <title>Portfolio - Jhonny Eliud Tambunan</title>
     <style>
         /* CSS Styling */
@@ -85,7 +87,7 @@
         .logo {
             font-size: 18px;
             font-weight: 800;
-            font-family: Georgia, serif;
+            font-family: 'Space Grotesk', sans-serif;
             color: var(--primary-color);    
             text-decoration: none;
             letter-spacing: 1px;
@@ -240,9 +242,30 @@
     min-height: 45px;
         }
 
-        body.dark #typing-name,
-        body.dark #typing-job{
-            border-right:3px solid #fff;
+        #beranda p {
+            font-size: 12px;
+          margin-bottom: 25px;
+           z-index: 2;
+            position: relative;
+        }
+
+.btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3);
+            z-index: 2;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(52, 152, 219, 0.4);
         }
 
         body.light #typing-name,
@@ -525,7 +548,7 @@
             section { padding: 100px 20px 40px; }
 
             nav { 
-                padding: 5px 5px; 
+                padding: 5px 15px; 
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -534,16 +557,14 @@
            
 
             .logo {
-             
-        font-size: 9px !important; /* Mengecilkan ukuran huruf agar muat di layar HP */
-       white-space:nowrap;
-       
-    }
+                font-family:'Plus Jakarta Sans',sans-serif;
+                font-size: 9px !important; /* Mengecilkan ukuran huruf agar muat di layar HP */
+                white-space:nowrap;
+                overflow: hidden;
+            }
 
     .nav-right{
-    display:flex;
-    align-items:center;
-    gap:5px;
+    gap:15px;
 }
             .theme-toggle {
                 display: flex;
@@ -705,6 +726,9 @@
 
         <h1><span id="typing-name"></span></h1>
         <h2><span id="typing-job"></span></h2>
+        <p style="max-width: 700px; margin-bottom: 35px; color: #333; font-size: 18px; font-weight: 500;">
+            Berpengalaman di industri FMCG dalam mengelola data, proses logistik, sistem WMS, dan integrasi SAP dengan standar keamanan pangan ISO 22000:2018.
+        </p>
         <a href="#pengalaman" class="btn">Lihat Pengalaman Saya</a>
     </section>
 
@@ -753,7 +777,7 @@
             </div>
             
             <p style="margin-bottom: 15px; font-weight: bold; color: var(--secondary-color);" data-aos="fade-up">Tanggung Jawab Utama:</p>
-            <ul class="tugas-list" data-aos="flip-up">
+            <ul class="tugas-list" data-aos="fade-up">
                 <li>Proses Sales Orders (SO) dan Delivery Orders (DO) melalui SAP.</li>
                 <li>Proses laporan pengeluaran data produk via web Bea Cukai CK-6 Ceisa 4.0.</li>
                 <li>Proses produk Reject, RMA, dan double rejection melalui SAP.</li>
@@ -790,7 +814,7 @@
 
     <section id="kontak">
         <h2 class="section-title" data-aos="fade-up">Hubungi Saya</h2>
-        <div class="kontak-container" data-aos="flip-down">
+        <div class="kontak-container" data-aos="fade-up">
             <p style="font-size: 18px; margin-bottom: 20px;">Tertarik untuk berdiskusi mengenai peluang kerja atau kolaborasi? Jangan ragu untuk menghubungi saya melalui kontak di bawah ini.</p>
             
             <p style="font-size: 16px; margin-bottom: 10px;"><strong>Email:</strong> jhonnyeliudtambunan@gmail.com</p>
