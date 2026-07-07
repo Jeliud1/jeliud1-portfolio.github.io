@@ -229,6 +229,7 @@
         }
 
         #beranda p {
+            padding: 20px;
             max-width: 700px; 
             font-size: 18px; 
             font-weight: 500;
@@ -240,8 +241,9 @@
         .btn {
             display: inline-block;
             padding: 14px 28px;
-            background-color: var(--secondary-color);
-            color: white;
+            background-color: transparent;
+            color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
             text-decoration: none;
             border-radius: 6px;
             font-weight: bold;
@@ -251,9 +253,41 @@
         }
 
         .btn:hover {
-            background-color: #2980b9;
+            background-color: var(--secondary-color);
             transform: translateY(-2px);
+            color: white;
             box-shadow: 0 6px 12px rgba(52, 152, 219, 0.4);
+        }
+
+        /* --- MODIFIKASI CONTAINER TOMBOL BERANDA --- */
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            margin-top: 5px;
+        }   
+
+        /* Tombol CV Baru dengan Gaya Berbeda (Outline/Secondary style) */
+        .btn-cv {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: transparent;
+            color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .btn-cv:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
         }
 
         .slider-container {
@@ -426,7 +460,7 @@
             list-style-position: inside;
         }
 
-        .tugas-list li { margin-bottom: 8px; color: var(--text-color); }
+        .tugas-list l { margin-bottom: 8px; color: var(--text-color); }
 
         .grid-keahlian {
             display: grid;
@@ -730,6 +764,33 @@
 
             nav ul.show { right: 0; }
             nav ul li a { font-size: 12px; display: block; color: var(--text-color); }
+
+            /* Mengatur kontainer tombol menjadi vertikal di layar HP */
+    .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        max-width: 280px; /* Membatasi lebar maksimal agar tidak terlalu melar */
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    /* Membuat ukuran tombol seragam dan pas di layar HP */
+    .btn, .btn-cv {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px; /* Sedikit memperkecil padding agar teks pas */
+        font-size: 14px;     /* Ukuran font disesuaikan untuk HP */
+    }
+
+    /* Menggeser posisi tombol slider panah agar tidak menabrak tombol utama */
+    .prev-btn { left: 5px; }
+    .next-btn { right: 5px; }
+    .slider-btn { top: 65%; } /* Menyesuaikan ketinggian panah jika diperlukan */
+}
+
+
             .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: rgba(0, 0, 0, 0.4); z-index: 1000; display: none; cursor: pointer; }
             .menu-overlay.active { display: block; }
 
@@ -814,8 +875,13 @@
 
         <h1><span id="typing-name"></span></h1>
         <h2><span id="typing-job"></span></h2>
-        <p>Berpengalaman di industri FMCG dalam mengelola dan menganalisi data, proses logistik, sistem WMS/ERP, entry data dan integrasi SAP.</p>
+        <p>Berpengalaman di industri FMCG dalam mengelola dan menganalisis data, proses logistik, sistem WMS, entry data dan integrasi SAP/ERP.</p>
+        <!-- Wadah Tombol Baru -->
+    <div class="hero-buttons">
         <a href="#pengalaman" class="btn">Lihat Pengalaman Saya</a>
+        <!-- Silakan ganti '#' di bawah dengan path file CV Anda, misal: 'cv-jhonny.pdf' -->
+        <a href="Surat Lamaran Kerja - Jhonny Eliud Tambunan.pdf" class="btn-cv" download>Download CV</a>
+    </div>
     </section>
 
     <section id="tentang">
@@ -873,7 +939,7 @@
         <div class="grid-keahlian">
             <div class="kartu-keahlian" data-aos="fade-right" data-aos-delay="0">
                 <h3>Sistem SAP & WMS</h3>
-                <p>Penguasaan mendalam dalam penggunaan SAP untuk proses logistik end-to-end, mulai dari SO, DO, Good Receipts (GR), Transfer Order (TO), hingga Return Management.</p>
+                <p>Penguasaan mendalam dalam penggunaan SAP untuk proses logistik end-to-end, mulai dari SO, DO, issue/Good Receipts/GI, Transfer Order (TO), create billing, shippment, POD, hingga Return Management.</p>
             </div>
             <div class="kartu-keahlian" data-aos="fade-right" data-aos-delay="200">
                 <h3>Administrasi Logistik & Bea Cukai</h3>
