@@ -241,8 +241,8 @@
         .btn {
             display: inline-block;
             padding: 14px 28px;
-            background-color: transparent;
-            color: var(--secondary-color);
+            background-color: var(--secondary-color);
+            color: white;
             border: 2px solid var(--secondary-color);
             text-decoration: none;
             border-radius: 6px;
@@ -273,8 +273,8 @@
         .btn-cv {
             display: inline-block;
             padding: 14px 28px;
-            background-color: transparent;
-            color: var(--secondary-color);
+            background-color: var(--secondary-color);
+            color: white;
             border: 2px solid var(--secondary-color);
             text-decoration: none;
             border-radius: 6px;
@@ -519,7 +519,7 @@
         }
 
         .cert-tab svg {
-            width: 30px;
+            width: 20px;
             height: 20px;
             fill: currentColor;
         }
@@ -541,18 +541,22 @@
 
         .cert-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 25px;
         }
 
         .cert-card {
             position: relative;
-            
             border: 1px solid var(--cert-card-border);
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             aspect-ratio: 16 / 10;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
         }
 
         .cert-card img {
@@ -678,8 +682,8 @@
             font-size: 32px; /* Ukuran sedikit disesuaikan agar lebih proporsional */
             font-weight: normal;
             cursor: pointer;
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             background: rgba(255, 255, 255, 0.2); /* Sedikit diperjelas warnanya */
             border-radius: 50%;
             display: flex;
@@ -766,30 +770,28 @@
             nav ul li a { font-size: 12px; display: block; color: var(--text-color); }
 
             /* Mengatur kontainer tombol menjadi vertikal di layar HP */
-    .hero-buttons {
-        flex-direction: column;
-        gap: 12px;
-        width: 100%;
-        max-width: 280px; /* Membatasi lebar maksimal agar tidak terlalu melar */
-        margin: 0 auto;
-        padding: 0 15px;
-    }
+            .hero-buttons {
+                flex-direction: column;
+                gap: 12px;
+                width: 100%;
+                max-width: 280px; /* Membatasi lebar maksimal agar tidak terlalu melar */
+                margin: 0 auto;
+                padding: 0 15px;
+            }
 
-    /* Membuat ukuran tombol seragam dan pas di layar HP */
-    .btn, .btn-cv {
-        display: block;
-        width: 100%;
-        text-align: center;
-        padding: 12px 20px; /* Sedikit memperkecil padding agar teks pas */
-        font-size: 14px;     /* Ukuran font disesuaikan untuk HP */
-    }
+            /* Membuat ukuran tombol seragam dan pas di layar HP */
+            .btn, .btn-cv {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 12px 20px; /* Sedikit memperkecil padding agar teks pas */
+                font-size: 14px;     /* Ukuran font disesuaikan untuk HP */
+            }
 
-    /* Menggeser posisi tombol slider panah agar tidak menabrak tombol utama */
-    .prev-btn { left: 5px; }
-    .next-btn { right: 5px; }
-    .slider-btn { top: 65%; } /* Menyesuaikan ketinggian panah jika diperlukan */
-}
-
+            /* Menggeser posisi tombol slider panah agar tidak menabrak tombol utama */
+            .prev-btn { left: 5px; }
+            .next-btn { right: 5px; }
+            .slider-btn { top: 65%; } /* Menyesuaikan ketinggian panah jika diperlukan */
 
             .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: rgba(0, 0, 0, 0.4); z-index: 1000; display: none; cursor: pointer; }
             .menu-overlay.active { display: block; }
@@ -830,6 +832,8 @@
             .kontak-container p { font-size: 15px !important; }
             .kontak-container a { font-size: 18px; }
         }
+
+            
     </style>
 </head>
 <body>
@@ -971,7 +975,7 @@
             </div>
 
             <!-- PANEL 1: Projects (Sama Seperti Tampilan Gudang Certificates) -->
-            <div class="cert-panel" id="panel-projects">
+            <div class="cert-panel" data-aos="fade-right" id="panel-projects">
                 <div class="cert-grid">
                     <!-- Project 1 -->
                     <div class="cert-card">
@@ -1075,27 +1079,28 @@
             <!-- PANEL 2: Certificates (Aktif Secara Default) -->
             <div class="cert-panel active" id="panel-certificates">
                 <div class="cert-grid">
-                    <div class="cert-card">
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
                         <img src="bnsp.jpg" alt="Sertifikat 1">
                         <div class="cert-overlay">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
                             <span>View Certificate</span>
                         </div>
                     </div>
-                    <div class="cert-card">
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="400">
                         <img src="dicoding.jpg" alt="Sertifikat 2">
                         <div class="cert-overlay">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
                             <span>View Certificate</span>
                         </div>
                     </div>
-                    <div class="cert-card">
+                    <!-- backup
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="400">
                         <img src="TOEFL.jpg" alt="Sertifikat 3">
                         <div class="cert-overlay">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
                             <span>View Certificate</span>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -1149,8 +1154,16 @@
                     </div>
                     <!-- Google Spreadsheet (Menggantikan SweetAlert2) -->
                     <div class="tech-card">
-                        <img src="gdrive.svg" alt="Spreadsheet">
-                        <span>G-Drive</span>
+                        <img src="canva.svg" alt="Spreadsheet">
+                        <span>Canva</span>
+                    </div>
+                    <div class="tech-card">
+                        <img src="sap.svg" alt="Spreadsheet">
+                        <span>SAP Logon 800</span>
+                    </div>
+                    <div class="tech-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Arduino_IDE_logo.svg" alt="Spreadsheet">
+                        <span>Arduino IDE</span>
                     </div>
                 </div>
             </div>
@@ -1161,9 +1174,9 @@
     <section id="kontak">
         <h2 class="section-title" data-aos="fade-up">Hubungi Saya</h2>
         <div class="kontak-container" data-aos="fade-up">
-            <p style="font-size: 18px; margin-bottom: 20px;">Tertarik untuk berdiskusi mengenai peluang kerja atau kolaborasi? Jangan ragu untuk menghubungi saya melalui kontak di bawah ini.</p>
-            <p style="font-size: 16px; margin-bottom: 10px;"><strong>Email:</strong> jhonnyeliudtambunan@gmail.com</p>
-            <p style="font-size: 16px; margin-bottom: 30px;"><strong>WhatsApp:</strong> 081284238674</p>
+            <p data-aos="fade-up" style="font-size: 18px; margin-bottom: 20px;">Tertarik untuk berdiskusi mengenai peluang kerja atau kolaborasi? Jangan ragu untuk menghubungi saya melalui kontak di bawah ini.</p>
+            <p data-aos="fade-up" style="font-size: 16px; margin-bottom: 10px;"><strong>Email:</strong> jhonnyeliudtambunan@gmail.com</p>
+            <p data-aos="fade-up" style="font-size: 16px; margin-bottom: 30px;"><strong>WhatsApp:</strong> 081284238674</p>
             <a href="https://www.linkedin.com/in/jhonny-eliud-tambunan-aa86a123b" target="_blank">LinkedIn</a> | 
             <a href="mailto:jhonnyeliudtambunan@gmail.com">Email</a> | 
             <a href="https://wa.me/6281284238674">WhatsApp</a>
